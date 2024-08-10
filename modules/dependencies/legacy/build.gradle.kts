@@ -9,7 +9,7 @@ val lwjglVersion = libs.versions.lwjgl.get()
 
 description = "Dependencies for legacy platforms (<1.12)"
 
-val natives = listOf("windows", "windows-arm64", "linux", "macos", "macos-arm64")
+val natives = listOf("windows", "windows-arm64", "linux", "linux-arm64", "macos", "macos-arm64")
 
 dependencies {
     for (dep in listOf("-nanovg", "-tinyfd", "-stb", "")) {
