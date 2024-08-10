@@ -74,5 +74,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: oneconfig-artifacts
-          path: versions/**/build/libs/
+          path: versions/1.8.9-forge/build/libs/
       - run: ls versions/**/build/libs/
