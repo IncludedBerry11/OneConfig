@@ -6,12 +6,8 @@ on:
   pull_request:
   workflow_dispatch:
   push:
-    branches-ignore:
-      - master
-      - main
     paths-ignore:
       - 'README.md'
-      - '.github/**'
       - '.editorconfig'
       - 'CODE_OF_CONDUCT.md'
       - 'CONTRIBUTING.md'
@@ -79,3 +75,4 @@ jobs:
         with:
           name: oneconfig-artifacts
           path: versions/**/build/libs/
+      - run: ls versions/**/build/libs/
