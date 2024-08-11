@@ -120,44 +120,6 @@ public final class NanoVGHelperImpl implements NanoVGHelper {
      */
     @Override
     public void setupAndDraw(int nvgFlags, boolean mcScaling, LongConsumer consumer) {
-        drawing = true;
-        if (vg == -1) {
-            vg = NanoVGGL2.nvgCreate(nvgFlags);
-            if (vg == -1) {
-                throw new RuntimeException("Failed to create nvg context");
-            }
-            FontHelper.INSTANCE.initialize(vg);
-        }
-
-        try {
-            Platform.getGLPlatform().enableStencil();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
-        UGraphics.disableAlpha();
-
-        if (mcScaling) {
-            nvgBeginFrame(vg, (float) UResolution.getScaledWidth(), (float) UResolution.getScaledHeight(), (float) UResolution.getScaleFactor());
-        } else {
-            nvgBeginFrame(vg, UResolution.getWindowWidth(), UResolution.getWindowHeight(), 1);
-        }
-
-        consumer.accept(vg);
-
-        nvgEndFrame(vg);
-        UGraphics.enableAlpha();
-        GL11.glPopAttrib();
-
-        if (readingPixels != null) {
-            final int amount = readingPixels[2] * readingPixels[3];
-            readColors = new int[amount];
-            final ByteBuffer buf = BufferUtils.createByteBuffer(readingPixels[2] * readingPixels[3] * 4);
-            GL11.glReadPixels(readingPixels[0], readingPixels[1], readingPixels[2], readingPixels[3], GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buf);
-            for (int i = 0; i < amount; i++)
-                readColors[i] = ColorUtils.getColor(buf.get(), buf.get(), buf.get(), buf.get());
-            readingPixels = null;
-        }
     }
 
     /**
