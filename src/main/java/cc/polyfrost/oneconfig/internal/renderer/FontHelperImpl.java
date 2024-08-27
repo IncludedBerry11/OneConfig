@@ -74,10 +74,6 @@ public class FontHelperImpl implements FontHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (loaded == -1) {
-            throw new RuntimeException("Failed to initialize font " + font.getName());
-        } else {
-            font.setLoaded(true);
-        }
+        font.setLoaded(true);
     }
 }
