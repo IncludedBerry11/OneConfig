@@ -52,5 +52,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: oneconfig-artifacts
-          path: versions/1.8.9-forge/build/libs/oneconfig-1.8.9-forge-0.2.2-alpha-LOCAL.jar
+          path: versions/1.8.9-forge/build/libs/oneconfig-1.8.9-forge-0.2.2-alpha-LOCAL-full.jar
       - run: ls versions/1.8.9-forge/build/libs
