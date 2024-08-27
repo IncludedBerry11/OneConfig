@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 
-import static org.lwjgl.nanovg.NanoVG;
+import org.lwjgl.nanovg.NanoVG;
 
 public class FontHelperImpl implements FontHelper {
 
