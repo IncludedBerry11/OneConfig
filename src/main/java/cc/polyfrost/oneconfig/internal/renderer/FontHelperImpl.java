@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 
-import static org.lwjgl.nanovg.NanoVG.nvgCreateFontMem;
+import static org.lwjgl.nanovg.NanoVG;
 
 public class FontHelperImpl implements FontHelper {
 
@@ -69,7 +69,7 @@ public class FontHelperImpl implements FontHelper {
         int loaded = -1;
         try {
             ByteBuffer buffer = IOUtils.resourceToByteBuffer(font.getFileName(), font.getClass());
-            loaded = nvgCreateFontMem(vg, font.getName(), buffer, 0);
+            loaded = NanoVG.nvgCreateFontMem(vg, font.getName(), buffer, 0);
             font.setBuffer(buffer);
         } catch (IOException e) {
             e.printStackTrace();
